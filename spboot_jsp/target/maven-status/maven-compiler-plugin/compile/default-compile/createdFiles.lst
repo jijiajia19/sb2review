@@ -1,0 +1,4 @@
+com\jacle\spboot\controller\FileUploadController.class
+com\jacle\spboot\controller\JspController.class
+com\jacle\spboot\JspApplication.class
+com\jacle\spboot\domain\Message.class
