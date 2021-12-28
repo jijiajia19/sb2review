@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
  * 以XML方式整合SSM.
@@ -11,9 +12,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @Slf4j
 //如果使用的注解，MapperScan还是需要添加的，虽然有事会warnning，可以忽略
+
 @MapperScan("com.jacle.spboot.annocationssm.domain")
 //启动类本身就是一个@configuration的注解
 @SpringBootApplication
+//        (exclude = DataSourceAutoConfiguration.class)
 public class SSMApplication
 {
 
