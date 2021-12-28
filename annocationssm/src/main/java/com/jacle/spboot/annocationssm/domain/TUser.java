@@ -1,7 +1,6 @@
 package com.jacle.spboot.annocationssm.domain;
 
-import lombok.Data;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Jacle
@@ -10,10 +9,34 @@ import org.springframework.stereotype.Controller;
  * @date 2021/12/24 15:41
  */
 
-@Data
-@Controller
+@Component
 public class TUser
 {
     private String name;
     private int age;
+
+    public TUser()
+    {
+
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public int getAge()
+    {
+        return age;
+    }
+
+    public void setAge(int age)
+    {
+        this.age = age;
+    }
 }

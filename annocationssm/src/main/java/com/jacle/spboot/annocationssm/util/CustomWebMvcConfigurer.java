@@ -3,13 +3,18 @@ package com.jacle.spboot.annocationssm.util;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.support.FormattingConversionService;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.nio.charset.Charset;
+import java.util.Date;
 import java.util.List;
 
 @Configuration
@@ -22,6 +27,8 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer
         FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
 
         FastJsonConfig config = new FastJsonConfig();
+        // 避免循环引用
+        config.setSerializerFeatures(SerializerFeature.WriteNullStringAsEmpty);
         config.setSerializerFeatures(SerializerFeature.DisableCircularReferenceDetect);
 
         converter.setFastJsonConfig(config);
@@ -52,4 +59,32 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer
         //注册之后
         registry.enableContentNegotiation(false);
     }*/
+
+    //类似初始化方法
+/*    @Autowired
+    public void setWebBindingInitializer(RequestMappingHandlerAdapter requestMappingHandlerAdapter)
+    {
+        //将自定义的CustomDateWebBindingInitializer属性编辑器绑定到RequestMappingHandlerAdapter里面.
+        //全局的请求参数类型转换器
+        requestMappingHandlerAdapter.setWebBindingInitializer(new CustomDateWebBindingInitializer());
+    }*/
+
+    //新的API:ConfigurableWebBindingInitializer
+    @Bean
+    ConfigurableWebBindingInitializer setcwbInitializer(FormattingConversionService mvcConversionService, Validator mvcValidator)
+    {
+        ConfigurableWebBindingInitializer initializer = new ConfigurableWebBindingInitializer();
+        initializer.setConversionService(mvcConversionService);
+        initializer.setValidator(mvcValidator);
+
+        //装配自定义属性编辑器
+        initializer.setPropertyEditorRegistrar(propertyEditorRegistry ->
+        {
+            //PropertyEditors并不是线程安全的，对于每一个请求，我们都需要new一个PropertyEditor对象
+            propertyEditorRegistry.registerCustomEditor(Date.class, new MyPropertyEditorSupport());
+        });
+
+        return initializer;
+    }
+
 }

@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * MapperScan:扫描Mybatis接口文件
  */
 @Slf4j
+//如果使用的注解，MapperScan还是需要添加的，虽然有事会warnning，可以忽略
 @MapperScan("com.jacle.spboot.annocationssm.domain")
 //启动类本身就是一个@configuration的注解
 @SpringBootApplication
@@ -21,7 +22,6 @@ public class SSMApplication
         log.info("程序开始启动:" + "start...");
         SpringApplication.run(SSMApplication.class, args);
     }
-
 
 
 }
