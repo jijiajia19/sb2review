@@ -12,6 +12,7 @@
         <module>spboot_jsp</module>
         <module>xmlssm</module>
         <module>annocationssm</module>
+        <module>httpmodule</module>
     </modules>
     <packaging>pom</packaging>
 
