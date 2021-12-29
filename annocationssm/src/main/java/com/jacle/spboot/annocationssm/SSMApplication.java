@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /**
  * 以XML方式整合SSM.
@@ -17,9 +17,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 //启动类本身就是一个@configuration的注解
 @SpringBootApplication
 //        (exclude = DataSourceAutoConfiguration.class)
+@ServletComponentScan(basePackages = {"com.jacle.spboot.annocationssm.servlet"})
 public class SSMApplication
 {
-
     public static void main(String[] args)
     {
         log.info("程序开始启动:" + "start...");

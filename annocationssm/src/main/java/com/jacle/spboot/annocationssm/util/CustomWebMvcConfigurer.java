@@ -3,6 +3,8 @@ package com.jacle.spboot.annocationssm.util;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.jacle.spboot.annocationssm.servlet.MyServlet;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.support.FormattingConversionService;
@@ -11,6 +13,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.nio.charset.Charset;
@@ -87,4 +90,32 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer
         return initializer;
     }
 
+    //全局注册Servlet
+    @Bean
+    public ServletRegistrationBean getServletRegistrationBean()
+    {
+        ServletRegistrationBean s = new ServletRegistrationBean(new MyServlet(), "/myservlet");
+
+        //设置servlet初始化参数
+        s.addInitParameter("name", "一一哥");
+        s.addInitParameter("sex", "man");
+
+        return s;
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry)
+    {
+        registry.addMapping("/**")
+                //针对的origin域名
+                .allowedOrigins("*")
+                //针对的方法
+                .allowedMethods("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS")
+                //是否允许发送Cookie
+                .allowCredentials(true)
+                //从预检请求得到相应的最大时间,默认30分钟
+                .maxAge(3600)
+                //针对的请求头
+                .allowedHeaders("*");
+    }
 }
