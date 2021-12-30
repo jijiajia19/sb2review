@@ -1,8 +1,8 @@
 package com.jacle.spboot.httpmodule.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
@@ -10,10 +10,10 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 @Slf4j
 @Data
-@Component
 public class User
 {
 
@@ -21,6 +21,7 @@ public class User
 
     private Integer age;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime birthday;
 
     private Date studyDate;
@@ -32,13 +33,15 @@ public class User
     public static User buildOne()
     {
         User user = new User();
+
         LocalDateTime now = LocalDateTime.now();
         user.setWorkDate(now.plusYears(25).toLocalDate());
         user.setStudyDate(Date.from(now.plusYears(5).atZone(ZoneId.systemDefault()).toInstant()));
-//        user.setName("姓名-" + RandomUtil.randomString(5));
-//        user.setAge(RandomUtil.randomInt(0, 100));
+        user.setName("姓名-" + new Random(200).toString());
+        user.setAge(new Random(100).nextInt());
         user.setBirthday(now);
         user.setFirstWorkDate(Calendar.getInstance());
+
         return user;
     }
 
