@@ -1,14 +1,19 @@
 package com.jacle.spboot.httpmodule.domain;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
+@Slf4j
 @Data
+@Component
 public class User
 {
 
@@ -37,5 +42,11 @@ public class User
         return user;
     }
 
+    @PostConstruct
+    public void prt()
+    {
+        log.info("create user bean ...");
+
+    }
     //getter and setter...
 }
