@@ -20,6 +20,7 @@ public class Student
     }
 
     //反序列化的时候通过此构造函数处理
+    //反序列，json实体跟实体类不匹配的适配
     @JsonCreator
     public Student(@JsonProperty("id") Integer id, @JsonProperty("name") String name, @JsonProperty("sex") String sex)
     {
@@ -48,6 +49,7 @@ public class Student
         this.name = name;
     }
 
+    //使用指定的序列化器
     @JsonSerialize(using = StudentJson.MySerialer.class)
     public String getSex()
     {

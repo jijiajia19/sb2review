@@ -19,7 +19,7 @@ import java.util.Date;
  * 使用@JsonComponent注释会自动被注册到Jackson中.
  */
 @Slf4j
-@JsonComponent
+@JsonComponent//自动将序列器加入到JsonMapper中
 //自动对象序列化和反序列化器，利用注解方式
 public class CustomeJackSon
 {
