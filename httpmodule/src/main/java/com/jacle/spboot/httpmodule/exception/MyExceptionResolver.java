@@ -2,7 +2,6 @@ package com.jacle.spboot.httpmodule.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,7 +16,7 @@ import java.io.IOException;
  * @description: 全局异常处理类
  * @date 2022/1/6 15:32
  */
-@Configuration
+//@Configuration
 @Slf4j
 public class MyExceptionResolver
 {

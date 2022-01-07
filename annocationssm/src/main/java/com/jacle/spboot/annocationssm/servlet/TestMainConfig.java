@@ -3,6 +3,8 @@ package com.jacle.spboot.annocationssm.servlet;
 import com.jacle.spboot.annocationssm.java8.MainConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Arrays;
+
 /**
  * @author Jacle
  * @version 1.0
@@ -17,5 +19,6 @@ public class TestMainConfig
         System.out.println(ctx.getBean("person"));
         System.out.println(ctx.getBean("car"));
         System.out.println(ctx.getBean("car"));
+        Arrays.stream(ctx.getBeanDefinitionNames()).forEach(item->{System.out.println(item);});
     }
 }

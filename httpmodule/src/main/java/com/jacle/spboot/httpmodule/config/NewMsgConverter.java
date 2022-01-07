@@ -57,6 +57,13 @@ public class NewMsgConverter implements WebMvcConfigurer
                 SerializerFeature.WriteDateUseDateFormat
         );
 
+        //修改配置返回内容的过滤
+        //WriteNullListAsEmpty  ：List字段如果为null,输出为[],而非null
+        //WriteNullStringAsEmpty ： 字符类型字段如果为null,输出为"",而非null
+        //DisableCircularReferenceDetect ：消除对同一对象循环引用的问题，默认为false（如果不配置有可能会进入死循环）
+        //WriteNullBooleanAsFalse：Boolean字段如果为null,输出为false,而非null
+        //WriteMapNullValue：是否输出值为null的字段,默认为false
+
         SerializeConfig serializeConfig = SerializeConfig.globalInstance;
         serializeConfig.put(BigInteger.class, ToStringSerializer.instance);
         serializeConfig.put(Long.class, ToStringSerializer.instance);
@@ -69,6 +76,23 @@ public class NewMsgConverter implements WebMvcConfigurer
         List<MediaType> mediaTypes = new ArrayList<>();
 //        mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
         mediaTypes.add(new MediaType("application", "json", StandardCharsets.UTF_8));
+        mediaTypes.add(MediaType.APPLICATION_JSON);
+        mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        mediaTypes.add(MediaType.APPLICATION_ATOM_XML);
+        mediaTypes.add(MediaType.APPLICATION_FORM_URLENCODED);
+        mediaTypes.add(MediaType.APPLICATION_OCTET_STREAM);
+        mediaTypes.add(MediaType.APPLICATION_PDF);
+        mediaTypes.add(MediaType.APPLICATION_RSS_XML);
+        mediaTypes.add(MediaType.APPLICATION_XHTML_XML);
+        mediaTypes.add(MediaType.APPLICATION_XML);
+        mediaTypes.add(MediaType.IMAGE_GIF);
+        mediaTypes.add(MediaType.IMAGE_JPEG);
+        mediaTypes.add(MediaType.IMAGE_PNG);
+        mediaTypes.add(MediaType.TEXT_EVENT_STREAM);
+        mediaTypes.add(MediaType.TEXT_HTML);
+        mediaTypes.add(MediaType.TEXT_MARKDOWN);
+        mediaTypes.add(MediaType.TEXT_PLAIN);
+        mediaTypes.add(MediaType.TEXT_XML);
         fastJsonHttpMessageConverter.setSupportedMediaTypes(mediaTypes);
         log.info("--------fastjson init--------");
 
