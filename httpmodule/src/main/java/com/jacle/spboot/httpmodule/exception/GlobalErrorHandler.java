@@ -16,16 +16,16 @@ import java.util.HashMap;
  */
 @Slf4j
 //@ControllerAdvice
-@RestControllerAdvice
+//@RestControllerAdvice
 //RespnseStatus通常跟全局Exception处理类放置在一起
 @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "系统繁忙，稍后访问")
 public class GlobalErrorHandler
 {
     @ExceptionHandler(Exception.class)
 //    @ResponseBody
-    public String prt()
+    public String prt(Exception e)
     {
-        log.error("异常抛出...");
+        log.error("异常抛出..." + e);
         return "异常抛出...";
     }
 
@@ -54,8 +54,8 @@ public class GlobalErrorHandler
     }
 
     //指定user，没有返回值的方法
-    @ModelAttribute
-    public void test(@RequestParam("loginname") String loginname, @RequestParam("password") String password, Model model)
+    @ModelAttribute //此注解一定会执行一次
+    public void test(@RequestParam(value = "loginname", required = false) String loginname, @RequestParam(value="password",required=false) String password, Model model)
     {
         HashMap<String, Object> map = new HashMap<>();
         map.put("name", loginname);
