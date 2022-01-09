@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import com.jacle.spboot.annocationssm.domain.Car;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,9 @@ import java.io.IOException;
 //@JsonComponent //同样的效果
 public class MyJsonMapper
 {
+
+    private Car car = new Car();
+
     @Bean
     @Primary  //实现类有多个，主要选择此
     @ConditionalOnMissingBean(ObjectMapper.class)
@@ -40,7 +44,8 @@ public class MyJsonMapper
         SerializerProvider serializerProvider = objectMapper.getSerializerProvider();
         //将null变为了“”
         //全局生效
-        serializerProvider.setNullValueSerializer(new JsonSerializer<Object>() {
+        serializerProvider.setNullValueSerializer(new JsonSerializer<Object>()
+        {
             @Override
             public void serialize(Object o, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonProcessingException
             {
