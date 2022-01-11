@@ -2,10 +2,7 @@ package com.jacle.spboot.validation.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jacle.spboot.validation.domain.Animal;
-import com.jacle.spboot.validation.domain.Student;
-import com.jacle.spboot.validation.domain.User;
-import com.jacle.spboot.validation.domain.ValidateList;
+import com.jacle.spboot.validation.domain.*;
 import com.jacle.spboot.validation.exception.ParamaErrorException;
 import com.jacle.spboot.validation.exception.ResponseResult;
 import com.jacle.spboot.validation.exception.ResultEnum;
@@ -116,5 +113,12 @@ public class TestController
         }
 //        log.info(br.getErrorCount()+"");
 //        return new ResponseResult(ResultEnum.SUCCESS);
+    }
+
+    @GetMapping(value = "/unitcaller")
+    @ResponseBody
+    public ResponseResult unitCaller(@Validated Unit unit)
+    {
+        return new ResponseResult(ResultEnum.SUCCESS);
     }
 }
