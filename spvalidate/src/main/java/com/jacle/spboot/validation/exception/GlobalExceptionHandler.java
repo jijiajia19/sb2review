@@ -23,7 +23,7 @@ public class GlobalExceptionHandler
     @ModelAttribute
     public void prt()
     {
-        log.info("拦截器...");
+        //log.info("拦截器...");
     }
 
     /**
@@ -105,8 +105,40 @@ public class GlobalExceptionHandler
     @ExceptionHandler({Exception.class})
     public ResponseResult errorHandler(Exception e)
     {
-        log.error("" + e);
-        return new ResponseResult(ResultEnum.UNKNOWN_ERROR);
+//        log.error("" + getExceptionMsg(e));
+
+        return new ResponseResult(ResultEnum.UNKNOWN_ERROR.getCode(),getExceptionMsg(e));
     }
 
+
+    private String getExceptionMsg(Throwable t)
+    {
+        StringBuilder baseMsg = t.getMessage() != null ? new StringBuilder(t.getMessage()) : new StringBuilder(t.toString());
+        if (t.getCause() != null)
+        {
+            if (t.getCause().getCause() != null)
+            {
+                if (t.getCause().getCause().getMessage() != null)
+                {
+                    baseMsg.append("\n").append(t.getCause().getCause().getMessage());
+                }
+            }
+        }
+        if (t.getStackTrace() != null && t.getStackTrace().length > 0)
+        {
+            StackTraceElement[] elements = t.getStackTrace();
+            for (StackTraceElement element : elements)
+            {
+                if (element.getClassName().contains("com.jacle"))
+                {
+                    baseMsg.append("\n")
+                            .append("className:").append(element.getClassName())
+                            .append("\n").append("methodName:").append(element.getMethodName())
+                            .append("\n").append("lineNumber:").append(element.getLineNumber());
+                    break;
+                }
+            }
+        }
+        return baseMsg.toString();
+    }
 }
