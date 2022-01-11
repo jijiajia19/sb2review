@@ -7,19 +7,25 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="xmlssm" />
-        <module name="spboot_jsp" />
         <module name="annocationssm" />
         <module name="webtemplate" />
+        <module name="xmlssm" />
+        <module name="spvalidate" />
         <module name="httpmodule" />
+        <module name="spboot_jsp" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="review" target="1.8" />
+      <module name="spbootreview" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="annocationssm" options="-parameters" />
       <module name="httpmodule" options="-parameters" />
       <module name="spboot_jsp" options="-parameters" />
+      <module name="spvalidate" options="-parameters" />
       <module name="webtemplate" options="-parameters" />
       <module name="xmlssm" options="-parameters" />
     </option>

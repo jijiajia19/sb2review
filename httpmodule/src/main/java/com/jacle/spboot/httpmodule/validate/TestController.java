@@ -3,6 +3,7 @@ package com.jacle.spboot.httpmodule.validate;
 import com.jacle.spboot.httpmodule.exception.ParamaErrorException;
 import com.jacle.spboot.httpmodule.exception.ResponseResult;
 import com.jacle.spboot.httpmodule.exception.ResultEnum;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
+@Controller
 public class TestController
 {
 

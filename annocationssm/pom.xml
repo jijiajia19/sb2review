@@ -75,10 +75,11 @@
                 <version>1.7.28</version>
             </dependency>-->
 
-        <dependency>
+        <!--使用到了这个jar，由于默认是jackson，所以返回xml-->
+     <!--   <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

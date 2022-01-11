@@ -13,6 +13,7 @@
         <module>xmlssm</module>
         <module>annocationssm</module>
         <module>httpmodule</module>
+        <module>spvalidate</module>
     </modules>
     <packaging>pom</packaging>
 
