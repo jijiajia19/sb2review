@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import com.jacle.spboot.annocationssm.domain.Car;
+//import com.jacle.spboot.annocationssm.domain.Car;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +28,7 @@ import java.io.IOException;
 public class MyJsonMapper
 {
 
-    private Car car = new Car();
+//    private Car car = new Car();
 
     @Bean
     @Primary  //实现类有多个，主要选择此
