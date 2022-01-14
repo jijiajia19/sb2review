@@ -3,9 +3,8 @@ package com.jacle.spboot.validation.crontab.quartz;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 //独立的调用定时配置方法
 public class OrderQuartzConfig
 {

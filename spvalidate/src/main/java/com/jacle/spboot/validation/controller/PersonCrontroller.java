@@ -4,6 +4,7 @@ import com.jacle.spboot.validation.domain.Person;
 import com.jacle.spboot.validation.service.PersonValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,8 @@ public class PersonCrontroller
     {
         log.info("请求参数：{}", person);
 
+        //通过此进行异常抛出替代，也能在后端被补货
+        Assert.notNull(person,"用户不存在");
 
         DataBinder binder = new DataBinder(person);
         binder.setValidator(new PersonValidator());
