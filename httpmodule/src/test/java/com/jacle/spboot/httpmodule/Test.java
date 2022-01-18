@@ -11,7 +11,8 @@ import com.jacle.spboot.httpmodule.exception.as.ResponseEnum;
 public class Test
 {
     @org.junit.Test
-    public void test1() {
+    public void test1()
+    {
         ResponseEnum.BAD_LICENCE_TYPE.assertNotNull(null);
     }
 
