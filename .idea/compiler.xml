@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="annocationssm" />
+        <module name="deploy" />
         <module name="adminclient" />
         <module name="webtemplate" />
         <module name="xmlssm" />
@@ -28,6 +29,7 @@
       <module name="actuator" options="-parameters" />
       <module name="adminclient" options="-parameters" />
       <module name="annocationssm" options="-parameters" />
+      <module name="deploy" options="-parameters" />
       <module name="httpmodule" options="-parameters" />
       <module name="spboot_jsp" options="-parameters" />
       <module name="spbootadmin" options="-parameters" />
