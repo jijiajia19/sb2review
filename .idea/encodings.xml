@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/actuator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/adminclient/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/annocationssm/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/httpmodule/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spboot_jsp/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spbootadmin/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spvalidate/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/webtemplate/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xmlssm/src/main/java" charset="UTF-8" />

@@ -8,9 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="annocationssm" />
+        <module name="adminclient" />
         <module name="webtemplate" />
         <module name="xmlssm" />
+        <module name="spbootadmin" />
         <module name="spvalidate" />
+        <module name="actuator" />
         <module name="httpmodule" />
         <module name="spboot_jsp" />
       </profile>
@@ -22,9 +25,12 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="actuator" options="-parameters" />
+      <module name="adminclient" options="-parameters" />
       <module name="annocationssm" options="-parameters" />
       <module name="httpmodule" options="-parameters" />
       <module name="spboot_jsp" options="-parameters" />
+      <module name="spbootadmin" options="-parameters" />
       <module name="spvalidate" options="-parameters" />
       <module name="webtemplate" options="-parameters" />
       <module name="xmlssm" options="-parameters" />
